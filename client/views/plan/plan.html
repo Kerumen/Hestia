@@ -22,16 +22,22 @@
       <div class="panel-heading">{{ vm.currentFloor.name }}</div>
       <div class="panel-body">
         <div class="tab-content">
-            <div ng-morph-modal="vm.roomMorph" class="room {{ room.state }}" ng-class="{occupied: room.occupied}" ng-repeat="room in vm.currentFloor.rooms">
-              {{ room.number }}
-              <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+            <div class="room {{ room.state }}" ng-class="{occupied: room.occupied}" ng-repeat="room in vm.currentFloor.rooms">
+              <div ng-if="room.state === 'available'" ng-morph-modal="roomMorphAvailable">
+                <span>{{ room.number }}</span>
+                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+              </div>
+              <div ng-if="room.state === 'dirty'" ng-morph-modal="roomMorphDirty">
+                <span>{{ room.number }}</span>
+                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+              </div>
+              <div ng-if="room.state === 'cleaned'" ng-morph-modal="roomMorphCleaned">
+                <span>{{ room.number }}</span>
+                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+              </div>
             </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<script id="calendar.html" type="text/ng-template">
-  <div>SALUT</div>
-</script>

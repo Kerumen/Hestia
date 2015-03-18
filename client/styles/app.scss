@@ -191,7 +191,10 @@ body {
   display: inline-block;
   margin: 10px;
 //  border: 1px solid $mediumgray-light;
-  padding: 40px;
+  line-height: 100px;
+  text-align: center;
+  height: 100px;
+  width: 100px;
   font-size: 20px;
   border-radius: 2px;
   &.available {
@@ -210,5 +213,25 @@ body {
     position: absolute;
     bottom: 10px;
     right: 10px;
+  }
+}
+
+
+.room-morph {
+  width: 400px;
+  height: 400px;
+  color: #F0F1F0;
+  padding: 10px;
+  &.available {
+    background-color: $grass-dark;
+  }
+  &.cleaned {
+    background-color: $bluejeans-dark;
+  }
+  &.dirty {
+    background-color: $grapefruit-dark;
+    &.occupied {
+      opacity: 0.4;
+    }
   }
 }

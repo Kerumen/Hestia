@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-  .controller('PlanCtrl', function () {
+  .controller('PlanCtrl', function ($scope) {
 
     var vm = this;
 
@@ -164,15 +164,24 @@ angular.module('app')
 
     vm.currentFloor = vm.floors[0];
 
-    vm.roomMorph = {
+    $scope.roomMorphAvailable = {
       closeEl: '.close',
       modal: {
-        templateUrl: 'calendar.html',
-        position: {
-          top: '30%',
-          left: '20%'
-        },
-        fade: false
+        templateUrl: 'views/plan/room-available.html'
+      }
+    };
+
+    $scope.roomMorphDirty = {
+      closeEl: '.close',
+      modal: {
+        templateUrl: 'views/plan/room-dirty.html'
+      }
+    };
+
+    $scope.roomMorphCleaned = {
+      closeEl: '.close',
+      modal: {
+        templateUrl: 'views/plan/room-cleaned.html'
       }
     }
 
