@@ -1,0 +1,30 @@
+<h3 class="text-center">Chambre #{{ room.number }}</h3>
+<hr>
+
+<div class="room-content {{ room.state }}">
+  <div class="room-content-title">Client</div>
+  <div>
+    <div ng-if="!room.client">Il n'y a aucun client dans cette chambre.</div>
+    <div ng-if="room.client.vip">Ce client est VIP.</div>
+    <div ng-if="room.client && !room.client.vip">Ce client n'est pas VIP.</div>
+  </div>
+</div>
+
+<div class="room-content {{ room.state }}">
+  <div class="room-content-title">Employé</div>
+  <div class="room-housemaid clearfix">
+    <div ng-if="!room.housemaid">Il n'y a aucun employé dans cette chambre.</div>
+    <div ng-if="room.housemaid">
+      <div class="room-housemaid-picture"><img ng-src="{{ room.housemaid.picture }}"/></div>
+      <div class="room-housemaid-infos">{{ room.housemaid.name }} est actuellement dans la chambre depuis {{ room.housemaid.timeElapsed | date: "mm'm'ss's'" }}.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="room-content {{ room.state }}">
+  <div class="room-content-title">Actions</div>
+  <div class="btn btn-default">Envoyer un employé</div>
+  <div class="btn btn-default">Envoyer un réparateur</div>
+</div>
+

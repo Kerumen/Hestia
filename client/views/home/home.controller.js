@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-  .controller('HomeCtrl', function ($interval) {
+  .controller('HomeCtrl', function ($interval, $timeout) {
 
     var vm = this;
 
@@ -50,5 +50,76 @@ angular.module('app')
         y: 25
       }
     ];
+
+    vm.alerts = [
+      {
+        message: 'Bar à remplir chambre 120',
+        time: 'Il y a 2 h',
+        done: false,
+        important: false
+      },
+      {
+        message: 'Oreiller manquant chambre 68',
+        time: 'Il y a 25 min',
+        done: false,
+        important: false
+      },
+      {
+        message: 'Toilette bouché chambre 308',
+        time: 'Il y a 4 min',
+        done: false,
+        important: false
+      }
+    ];
+
+    vm.addAlert = function () {
+      $timeout(function () {
+        vm.alerts.push({
+          message: 'Comportement indésirable signalé chambre 68 !',
+          time: 'A l\'instant',
+          done: false,
+          important: true
+        });
+      }, 3000);
+    };
+
+    vm.noAlert = function () {
+      return _.find(vm.alerts, function (item) {
+        return !item.done;
+      })
+    };
+
+    vm.events = [
+      {
+        title: 'Nettoyage #201',
+        message: 'Alice vient de nettoyer la chambre 201',
+        time: '17h30'
+      },
+      {
+        title: 'Nettoyage #58',
+        message: 'Jacqueline vient de nettoyer la chambre 58',
+        time: '17h15'
+      },
+      {
+        title: 'Nettoyage #22',
+        message: 'Fatima vient de nettoyer la chambre 22',
+        time: '16h08'
+      },
+      {
+        title: 'Nettoyage #147',
+        message: 'Franck vient de nettoyer la chambre 147',
+        time: '15h22'
+      }
+    ];
+
+    vm.addEvent = function () {
+      $timeout(function () {
+        vm.events.unshift({
+          title: 'Nettoyage #42',
+          message: 'Alicia vient de nettoyer la chambre 42',
+          time: '18h04'
+        });
+      }, 3000);
+    };
 
   });

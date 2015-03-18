@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-  .controller('PlanCtrl', function ($scope) {
+  .controller('PlanCtrl', function ($scope, $interval) {
 
     var vm = this;
 
@@ -19,8 +19,8 @@ angular.module('app')
           },
           {
             number: 101,
-            state: 'cleaned',
-            occupied: true,
+            state: 'unavailable',
+            occupied: false,
             housemaid: null,
             client: null
           },
@@ -41,9 +41,15 @@ angular.module('app')
           {
             number: 103,
             state: 'dirty',
-            occupied: true,
-            housemaid: null,
-            client: null
+            occupied: false,
+            client: {
+              vip: false
+            },
+            housemaid: {
+              name: 'Agathe',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/2.jpg',
+              timeElapsed: 255787
+            }
           },
           {
             number: 104,
@@ -71,7 +77,9 @@ angular.module('app')
             state: 'dirty',
             occupied: false,
             housemaid: {
-              name: 'Petrouchka'
+              name: 'Lisa',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/1.jpg',
+              timeElapsed: 815987
             },
             client: null
           },
@@ -105,28 +113,98 @@ angular.module('app')
         name: 'Étage 2',
         rooms: [
           {
-            number: 200
+            number: 100,
+            state: 'available',
+            occupied: true,
+            housemaid: null,
+            client: null
           },
           {
-            number: 201
+            number: 101,
+            state: 'unavailable',
+            occupied: false,
+            housemaid: null,
+            client: null
           },
           {
-            number: 202
+            number: 102,
+            state: 'dirty',
+            occupied: true,
+            housemaid: null,
+            client: null
           },
           {
-            number: 203
+            number: 103,
+            state: 'available',
+            occupied: true,
+            housemaid: null,
+            client: null
           },
           {
-            number: 203
+            number: 103,
+            state: 'dirty',
+            occupied: false,
+            client: {
+              vip: false
+            },
+            housemaid: {
+              name: 'Agathe',
+              timeElapsed: 255787
+            }
           },
           {
-            number: 204
+            number: 104,
+            state: 'available',
+            occupied: false,
+            housemaid: null,
+            client: null
           },
           {
-            number: 205
+            number: 105,
+            state: 'cleaned',
+            occupied: false,
+            housemaid: null,
+            client: null
           },
           {
-            number: 206
+            number: 106,
+            state: 'available',
+            occupied: false,
+            housemaid: null,
+            client: null
+          },
+          {
+            number: 107,
+            state: 'dirty',
+            occupied: false,
+            housemaid: {
+              name: 'Lisa',
+              timeElapsed: 815987
+            },
+            client: null
+          },
+          {
+            number: 108,
+            state: 'dirty',
+            occupied: false,
+            housemaid: null,
+            client: {
+              vip: true
+            }
+          },
+          {
+            number: 109,
+            state: 'cleaned',
+            occupied: true,
+            housemaid: null,
+            client: null
+          },
+          {
+            number: 110,
+            state: 'available',
+            occupied: false,
+            housemaid: null,
+            client: null
           }
         ]
       },
@@ -135,28 +213,98 @@ angular.module('app')
         name: 'Étage 3',
         rooms: [
           {
-            number: 300
+            number: 100,
+            state: 'available',
+            occupied: true,
+            housemaid: null,
+            client: null
           },
           {
-            number: 301
+            number: 101,
+            state: 'unavailable',
+            occupied: false,
+            housemaid: null,
+            client: null
           },
           {
-            number: 302
+            number: 102,
+            state: 'dirty',
+            occupied: true,
+            housemaid: null,
+            client: null
           },
           {
-            number: 303
+            number: 103,
+            state: 'available',
+            occupied: true,
+            housemaid: null,
+            client: null
           },
           {
-            number: 303
+            number: 103,
+            state: 'dirty',
+            occupied: false,
+            client: {
+              vip: false
+            },
+            housemaid: {
+              name: 'Agathe',
+              timeElapsed: 255787
+            }
           },
           {
-            number: 304
+            number: 104,
+            state: 'available',
+            occupied: false,
+            housemaid: null,
+            client: null
           },
           {
-            number: 305
+            number: 105,
+            state: 'cleaned',
+            occupied: false,
+            housemaid: null,
+            client: null
           },
           {
-            number: 306
+            number: 106,
+            state: 'available',
+            occupied: false,
+            housemaid: null,
+            client: null
+          },
+          {
+            number: 107,
+            state: 'dirty',
+            occupied: false,
+            housemaid: {
+              name: 'Lisa',
+              timeElapsed: 815987
+            },
+            client: null
+          },
+          {
+            number: 108,
+            state: 'dirty',
+            occupied: false,
+            housemaid: null,
+            client: {
+              vip: true
+            }
+          },
+          {
+            number: 109,
+            state: 'cleaned',
+            occupied: true,
+            housemaid: null,
+            client: null
+          },
+          {
+            number: 110,
+            state: 'available',
+            occupied: false,
+            housemaid: null,
+            client: null
           }
         ]
       }
@@ -168,6 +316,13 @@ angular.module('app')
       closeEl: '.close',
       modal: {
         templateUrl: 'views/plan/room-available.html'
+      }
+    };
+
+    $scope.roomMorphUnavailable = {
+      closeEl: '.close',
+      modal: {
+        templateUrl: 'views/plan/room-unavailable.html'
       }
     };
 
@@ -183,6 +338,11 @@ angular.module('app')
       modal: {
         templateUrl: 'views/plan/room-cleaned.html'
       }
-    }
+    };
+
+    $interval(function () {
+      vm.floors[0].rooms[8].housemaid.timeElapsed += 1000;
+      vm.floors[0].rooms[4].housemaid.timeElapsed += 1000;
+    }, 1000);
 
   });

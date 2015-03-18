@@ -27,6 +27,10 @@
                 <span>{{ room.number }}</span>
                 <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
               </div>
+              <div ng-if="room.state === 'unavailable'" ng-morph-modal="roomMorphUnavailable">
+                <span>{{ room.number }}</span>
+                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+              </div>
               <div ng-if="room.state === 'dirty'" ng-morph-modal="roomMorphDirty">
                 <span>{{ room.number }}</span>
                 <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
