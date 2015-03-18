@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Tableau de bord
+      <span class="pull-right">{{ vm.time | date:'mediumTime' }}</span>
+    </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><i class="fa fa-pie-chart"></i>&nbsp;Répartition</div>
+      <div class="panel-body">
+        <nvd3 options="vm.options" data="vm.data"></nvd3>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-exclamation-triangle fa-fw"></i>&nbsp;Alertes
+      </div>
+      <div class="panel-body">
+        <div class="list-group">
+          <a href="#" class="list-group-item">
+            <i class="fa fa-exclamation-circle fa-fw"></i> Bar à remplir
+            <span class="pull-right text-muted small"><em>Il y a 4 min</em></span>
+          </a>
+          <a href="#" class="list-group-item">
+            <i class="fa fa-exclamation-circle fa-fw"></i> Toilette bouché chambre 308
+            <span class="pull-right text-muted small"><em>Il y a 2h</em></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><i class="fa fa-bell"></i>&nbsp;Événements</div>
+      <div class="panel-body">
+        <div class="timeline">
+          <dl>
+            <dt>17h</dt>
+            <dd class="pos-right clearfix">
+              <div class="circ"></div>
+              <div class="time">17h 22</div>
+              <div class="events">
+                <div class="pull-left"><i class="events-object fa fa-bed fa-3x"></i></div>
+                <div class="events-body"><h4 class="events-heading">Nettoyage #201</h4>
+
+                  <p>La chambre 201 vient d'être nettoyée par Fatima.</p></div>
+              </div>
+            </dd>
+            <dd class="pos-left clearfix">
+              <div class="circ"></div>
+              <div class="time">17h 14</div>
+              <div class="events">
+                <div class="pull-left"><i class="events-object fa fa-bed fa-3x"></i></div>
+                <div class="events-body"><h4 class="events-heading">Nettoyage #65</h4>
+
+                  <p>La chambre 65 vient d'être nettoyée par Nabila.</p></div>
+              </div>
+            </dd>
+            <dt>16h</dt>
+            <dd class="pos-right clearfix">
+              <div class="circ"></div>
+              <div class="time">16h 32</div>
+              <div class="events">
+                <div class="pull-left"><i class="events-object fa fa-bed fa-3x"></i></div>
+                <div class="events-body"><h4 class="events-heading">Nettoyage #201</h4>
+
+                  <p>La chambre 201 vient d'être nettoyée par Fatima.</p></div>
+              </div>
+            </dd>
+            <dd class="pos-left clearfix">
+              <div class="circ"></div>
+              <div class="time">16h 04</div>
+              <div class="events">
+                <div class="pull-left"><i class="events-object fa fa-bed fa-3x"></i></div>
+                <div class="events-body"><h4 class="events-heading">Nettoyage #65</h4>
+
+                  <p>La chambre 65 vient d'être nettoyée par Nabila.</p></div>
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

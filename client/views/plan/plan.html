@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Plan de l'hôtel</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">Choix de l'étage</div>
+      <div class="panel-body">
+        <div class="list-group">
+          <a href="#" class="list-group-item" ng-repeat="floor in vm.floors" ng-class="{active: vm.currentFloor == floor}" ng-click="vm.currentFloor = floor">
+            <i class="fa fa-building fa-fw"></i>&nbsp;{{ floor.name }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">{{ vm.currentFloor.name }}</div>
+      <div class="panel-body">
+        <div class="tab-content">
+            <div ng-morph-modal="vm.roomMorph" class="room {{ room.state }}" ng-class="{occupied: room.occupied}" ng-repeat="room in vm.currentFloor.rooms">
+              {{ room.number }}
+              <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="calendar.html" type="text/ng-template">
+  <div>SALUT</div>
+</script>
