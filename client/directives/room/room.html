@@ -2,11 +2,11 @@
 <hr>
 
 <div class="room-content {{ room.state }}">
-  <div class="room-content-title">Client</div>
+  <div class="room-content-title">Spécificités</div>
   <div>
-    <div ng-if="!room.client">Aucun client dans cette chambre.</div>
-    <div ng-if="room.client.vip">Ce client est VIP.</div>
-    <div ng-if="room.client && !room.client.vip">Ce client n'est pas VIP.</div>
+    <div ng-if="room.specificity.vip">Ce client est VIP.</div>
+    <div ng-if="!room.specificity.vip">Ce client n'est pas VIP.</div>
+    <div ng-if="room.specificity.typeOfLeave">Statut : {{ room.specificity.typeOfLeave }}</div>
   </div>
 </div>
 
@@ -22,17 +22,6 @@
           {{ room.housemaid.timeElapsed | date: "mm:ss" }}
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="room-content {{ room.state }}">
-  <div class="room-content-title">Assignée à</div>
-  <div ng-if="!room.assignedTo">Aucun employé assigné à cette chambre.</div>
-  <div ng-if="room.assignedTo">
-    <div class="row">
-      <div class="col-md-6"><img ng-src="{{ room.assignedTo.picture }}"/></div>
-      <div class="col-md-6">{{ room.assignedTo.name }}</div>
     </div>
   </div>
 </div>

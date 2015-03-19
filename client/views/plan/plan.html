@@ -56,29 +56,44 @@
             <div ng-if="room.state === 'available'" ng-morph-modal="roomMorphAvailable">
               <span>{{ room.number }}</span>
               <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
-              <span ng-if="!room.assignedTo" class="fa fa-exclamation-triangle room-danger"></span>
+
               <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
             </div>
             <div ng-if="room.state === 'unavailable'" ng-morph-modal="roomMorphUnavailable">
               <span>{{ room.number }}</span>
               <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
-              <span ng-if="!room.assignedTo" class="fa fa-exclamation-triangle room-danger"></span>
               <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
             </div>
             <div ng-if="room.state === 'dirty'" ng-morph-modal="roomMorphDirty">
               <span>{{ room.number }}</span>
               <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
-              <span ng-if="!room.assignedTo" class="fa fa-exclamation-triangle room-danger"></span>
               <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
             </div>
             <div ng-if="room.state === 'cleaned'" ng-morph-modal="roomMorphCleaned">
               <span>{{ room.number }}</span>
               <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
-              <span ng-if="!room.assignedTo" class="fa fa-exclamation-triangle room-danger"></span>
               <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Liste des employés</div>
+      <div class="panel-body">
+        <ul class="list-inline list-unstyled">
+        <li ng-repeat="housemaid in vm.housemaids">
+          <div>
+            <div class="housemaid-name">{{ housemaid.name }}</div>
+            <div class="housemaid-room" ng-repeat="room in housemaid.rooms">{{ room }}</div>
+          </div>
+        </li>
+        </ul>
       </div>
     </div>
   </div>

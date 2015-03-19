@@ -15,10 +15,9 @@ angular.module('app')
             state: 'available',
             occupied: true,
             housemaid: null,
-            client: null,
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            specificity: {
+              vip: true,
+              typeOfLeave: 'départ'
             }
           },
           {
@@ -26,10 +25,9 @@ angular.module('app')
             state: 'unavailable',
             occupied: false,
             housemaid: null,
-            client: null,
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            specificity: {
+              vip: true,
+              typeOfLeave: 'départ'
             }
           },
           {
@@ -37,10 +35,9 @@ angular.module('app')
             state: 'dirty',
             occupied: true,
             housemaid: null,
-            client: null,
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            specificity: {
+              vip: true,
+              typeOfLeave: 'départ'
             }
           },
           {
@@ -48,61 +45,57 @@ angular.module('app')
             state: 'available',
             occupied: true,
             housemaid: null,
-            client: null,
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
-            }
-          },
-          {
-            number: 103,
-            state: 'dirty',
-            occupied: false,
-            client: {
-              vip: false
-            },
-            housemaid: {
-              name: 'Agathe',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/2.jpg',
-              timeElapsed: 255787
-            },
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            specificity: {
+              vip: true,
+              typeOfLeave: 'départ'
             }
           },
           {
             number: 104,
             state: 'dirty',
             occupied: false,
-            housemaid: null,
-            client: null,
-            assignedTo: null
+            specificity: {
+              vip: true,
+              typeOfLeave: 'recouche'
+            },
+            housemaid: {
+              name: 'Agathe',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/2.jpg',
+              timeElapsed: 255787
+            }
           },
           {
             number: 105,
-            state: 'cleaned',
+            state: 'dirty',
             occupied: false,
             housemaid: null,
-            client: null,
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            specificity: {
+              vip: true,
+              typeOfLeave: 'départ'
             }
           },
           {
             number: 106,
-            state: 'available',
+            state: 'cleaned',
             occupied: false,
             housemaid: null,
-            client: null,
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            specificity: {
+              vip: true,
+              typeOfLeave: 'départ'
             }
           },
           {
             number: 107,
+            state: 'available',
+            occupied: false,
+            housemaid: null,
+            specificity: {
+              vip: true,
+              typeOfLeave: 'départ'
+            }
+          },
+          {
+            number: 108,
             state: 'dirty',
             occupied: false,
             housemaid: {
@@ -110,42 +103,29 @@ angular.module('app')
               picture: 'http://api.randomuser.me/portraits/thumb/women/1.jpg',
               timeElapsed: 815987
             },
-            client: null,
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            specificity: {
+              vip: true,
+              typeOfLeave: 'recouche'
             }
           },
           {
-            number: 108,
+            number: 109,
             state: 'dirty',
             occupied: false,
             housemaid: null,
-            client: {
-              vip: true
-            },
-            assignedTo: null
-          },
-          {
-            number: 109,
-            state: 'cleaned',
-            occupied: true,
-            housemaid: null,
-            client: null,
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            specificity: {
+              vip: true,
+              typeOfLeave: 'départ'
             }
           },
           {
             number: 110,
-            state: 'available',
-            occupied: false,
+            state: 'cleaned',
+            occupied: true,
             housemaid: null,
-            client: null,
-            assignedTo: {
-              name: 'Géraldine',
-              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            specificity: {
+              vip: true,
+              typeOfLeave: 'recouche'
             }
           }
         ]
@@ -159,34 +139,34 @@ angular.module('app')
             state: 'available',
             occupied: true,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 101,
             state: 'unavailable',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 102,
             state: 'dirty',
             occupied: true,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 103,
             state: 'available',
             occupied: true,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 103,
             state: 'dirty',
             occupied: false,
-            client: {
+            specificity: {
               vip: false
             },
             housemaid: {
@@ -199,21 +179,21 @@ angular.module('app')
             state: 'available',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 105,
             state: 'cleaned',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 106,
             state: 'available',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 107,
@@ -223,14 +203,14 @@ angular.module('app')
               name: 'Lisa',
               timeElapsed: 815987
             },
-            client: null
+            specificity: null
           },
           {
             number: 108,
             state: 'dirty',
             occupied: false,
             housemaid: null,
-            client: {
+            specificity: {
               vip: true
             }
           },
@@ -239,14 +219,14 @@ angular.module('app')
             state: 'cleaned',
             occupied: true,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 110,
             state: 'available',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           }
         ]
       },
@@ -259,34 +239,34 @@ angular.module('app')
             state: 'available',
             occupied: true,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 101,
             state: 'unavailable',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 102,
             state: 'dirty',
             occupied: true,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 103,
             state: 'available',
             occupied: true,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 103,
             state: 'dirty',
             occupied: false,
-            client: {
+            specificity: {
               vip: false
             },
             housemaid: {
@@ -299,21 +279,21 @@ angular.module('app')
             state: 'available',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 105,
             state: 'cleaned',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 106,
             state: 'available',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 107,
@@ -323,14 +303,14 @@ angular.module('app')
               name: 'Lisa',
               timeElapsed: 815987
             },
-            client: null
+            specificity: null
           },
           {
             number: 108,
             state: 'dirty',
             occupied: false,
             housemaid: null,
-            client: {
+            specificity: {
               vip: true
             }
           },
@@ -339,14 +319,14 @@ angular.module('app')
             state: 'cleaned',
             occupied: true,
             housemaid: null,
-            client: null
+            specificity: null
           },
           {
             number: 110,
             state: 'available',
             occupied: false,
             housemaid: null,
-            client: null
+            specificity: null
           }
         ]
       }
@@ -439,6 +419,38 @@ angular.module('app')
 
     vm.changeCurrentFloor = function (index) {
       vm.currentFloor = vm.floors[index];
-    }
+    };
 
+    vm.housemaids = [
+      {
+        name: 'Lisa',
+        picture: '',
+        rooms : [101, 102, 103, 104]
+      },
+      {
+        name: 'Zoé',
+        picture: '',
+        rooms : [101, 102, 103, 104]
+      },
+      {
+        name: 'Agathe',
+        picture: '',
+        rooms : [101, 102, 103, 104]
+      },
+      {
+        name: 'Fatima',
+        picture: '',
+        rooms : [101, 102, 103, 104]
+      },
+      {
+        name: 'Franck',
+        picture: '',
+        rooms : [101, 102, 103, 104]
+      },
+      {
+        name: 'Rajid',
+        picture: '',
+        rooms : [101, 102, 103, 104]
+      }
+    ]
   });
