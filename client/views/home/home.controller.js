@@ -74,7 +74,7 @@ angular.module('app')
           done: false,
           important: true
         });
-      }, 3000);
+      }, 1000);
     };
 
     vm.addPlumberAlert = function () {
@@ -85,7 +85,7 @@ angular.module('app')
           done: false,
           important: false
         });
-      }, 3000);
+      }, 1000);
     };
 
     vm.noAlert = function () {
@@ -139,14 +139,14 @@ angular.module('app')
         vm.data[0].y++;
         vm.data[2].y--;
 
-      }, 3000);
+      }, 1000);
     };
 
     vm.addClientLeaveEvent = function () {
       $timeout(function () {
         vm.events.unshift({
           title: 'Départ #89',
-          message: 'Un client vient de partir de la chambre 102',
+          message: 'Un client vient de partir de la chambre 303',
           time: Date.now(),
           icon: 'arrow-left'
         });
@@ -154,7 +154,7 @@ angular.module('app')
         vm.data[0].y--;
         vm.data[2].y++;
 
-      }, 3000);
+      }, 1000);
     };
 
     vm.messages = [

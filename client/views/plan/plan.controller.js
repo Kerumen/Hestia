@@ -252,7 +252,7 @@ angular.module('app')
           },
           {
             number: 303,
-            state: 'available',
+            state: 'dirty',
             occupied: true,
             housemaid: null,
             specificity: null
