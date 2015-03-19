@@ -157,4 +157,48 @@ angular.module('app')
       }, 3000);
     };
 
+    vm.messages = [
+      {
+        picture: 'http://api.randomuser.me/portraits/thumb/men/4.jpg',
+        to: 'Franck',
+        time: 'Il y a 4 min',
+        content: 'Attention ! Monsieur Durand de la chambre 123 veut que sa chambre soit faite pour 10h !'
+      },
+      {
+        picture: 'http://api.randomuser.me/portraits/thumb/women/16.jpg',
+        to: 'Zoé',
+        time: 'Il y a 34 min',
+        content: 'Attention ! Monsieur Durant de la chambre 321 veut que sa chambre soit faite pour 10h30 !'
+      },
+      {
+        picture: 'http://api.randomuser.me/portraits/thumb/women/16.jpg',
+        to: 'Alicia',
+        time: 'Il y a 44 min',
+        content: 'Attention ! Monsieur Durant de la chambre 21 veut que sa chambre soit faite pour 11h30 !'
+      }
+    ];
+
+    var chatPanel = angular.element('.chat-panel .panel-body');
+    $timeout(function () {
+      chatPanel.animate({
+        scrollTop: chatPanel[0].scrollHeight
+      });
+    }, 200);
+    vm.addMessage = function () {
+      vm.messages.push({
+        picture: 'http://api.randomuser.me/portraits/thumb/women/55.jpg',
+        to: 'Carole',
+        time: 'À l\'instant',
+        content: vm.message
+      });
+      vm.message = null;
+      $timeout(function () {
+        chatPanel.animate({
+          scrollTop: chatPanel[0].scrollHeight
+        });
+      }, 100);
+    };
+
+    vm.message = 'Mme Durand, veuillez passer au bureau de votre superviseur dans les plus brefs délais.'
+
   });
