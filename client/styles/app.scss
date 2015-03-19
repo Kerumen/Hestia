@@ -406,15 +406,61 @@ hr {
   margin-bottom: 30px;
 }
 
-.floors {
-//  overflow: hidden;
-//  max-height: 375px;
+.housemaid-list {
+  margin-bottom: 5px;
+  input {
+    width: 100px !important;
+  }
 }
 
 .housemaid-name {
+  width: 100px;
+  height: 50px;
+  line-height: 40px;
+  padding: 5px 10px;
+  font-weight: bold;
   display: inline-block;
+  cursor: pointer;
 }
 
 .housemaid-room {
+  text-align: center;
+  padding: 5px 10px;
+  background-color: $mediumgray-dark;
+  margin-left: 15px;
+  width: 50px;
+  height: 30px;
+  line-height: 22px;
   display: inline-block;
+
+
+  &.ng-enter,
+  &.ng-leave
+  {
+    -webkit-transition: 200ms ease-in-out all;
+    transition: 200ms ease-in-out all;
+    position: relative;
+    display: inline-block;
+//    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+
+  &.ng-leave.ng-leave-active,
+  &.ng-enter {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &.ng-enter.ng-enter-active,
+  &.ng-leave {
+    opacity: 1;
+    width: 50px;
+    height: 30px;
+  }
+}
+
+.navbar-brand {
+  font-size: 25px;
 }

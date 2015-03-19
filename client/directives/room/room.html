@@ -6,7 +6,8 @@
   <div>
     <div ng-if="room.specificity.vip">Ce client est VIP.</div>
     <div ng-if="!room.specificity.vip">Ce client n'est pas VIP.</div>
-    <div ng-if="room.specificity.typeOfLeave">Statut : {{ room.specificity.typeOfLeave }}</div>
+    <div ng-if="room.specificity.typeOfLeave">Statut : {{ room.specificity.typeOfLeave }}.</div>
+    <div ng-if="room.specificity.type">Type de chambre : {{ room.specificity.type }}.</div>
   </div>
 </div>
 
