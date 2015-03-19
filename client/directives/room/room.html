@@ -26,10 +26,19 @@
   </div>
 </div>
 
+<div class="room-content {{ room.state }}">
+  <div class="room-content-title">Assignée à</div>
+  <div ng-if="!room.assignedTo">Aucun employé assigné à cette chambre.</div>
+  <div ng-if="room.assignedTo">
+    <div class="row">
+      <div class="col-md-6"><img ng-src="{{ room.assignedTo.picture }}"/></div>
+      <div class="col-md-6">{{ room.assignedTo.name }}</div>
+    </div>
+  </div>
+</div>
 
 <div class="room-content {{ room.state }}">
   <div class="room-content-title">Actions</div>
-  <div class="btn btn-default">Envoyer un employé</div>
   <div class="btn btn-default">Envoyer un réparateur</div>
 </div>
 

@@ -15,28 +15,44 @@ angular.module('app')
             state: 'available',
             occupied: true,
             housemaid: null,
-            client: null
+            client: null,
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            }
           },
           {
             number: 101,
             state: 'unavailable',
             occupied: false,
             housemaid: null,
-            client: null
+            client: null,
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            }
           },
           {
             number: 102,
             state: 'dirty',
             occupied: true,
             housemaid: null,
-            client: null
+            client: null,
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            }
           },
           {
             number: 103,
             state: 'available',
             occupied: true,
             housemaid: null,
-            client: null
+            client: null,
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            }
           },
           {
             number: 103,
@@ -49,28 +65,41 @@ angular.module('app')
               name: 'Agathe',
               picture: 'http://api.randomuser.me/portraits/thumb/women/2.jpg',
               timeElapsed: 255787
+            },
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
             }
           },
           {
             number: 104,
-            state: 'available',
+            state: 'dirty',
             occupied: false,
             housemaid: null,
-            client: null
+            client: null,
+            assignedTo: null
           },
           {
             number: 105,
             state: 'cleaned',
             occupied: false,
             housemaid: null,
-            client: null
+            client: null,
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            }
           },
           {
             number: 106,
             state: 'available',
             occupied: false,
             housemaid: null,
-            client: null
+            client: null,
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            }
           },
           {
             number: 107,
@@ -81,7 +110,11 @@ angular.module('app')
               picture: 'http://api.randomuser.me/portraits/thumb/women/1.jpg',
               timeElapsed: 815987
             },
-            client: null
+            client: null,
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            }
           },
           {
             number: 108,
@@ -90,21 +123,30 @@ angular.module('app')
             housemaid: null,
             client: {
               vip: true
-            }
+            },
+            assignedTo: null
           },
           {
             number: 109,
             state: 'cleaned',
             occupied: true,
             housemaid: null,
-            client: null
+            client: null,
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            }
           },
           {
             number: 110,
             state: 'available',
             occupied: false,
             housemaid: null,
-            client: null
+            client: null,
+            assignedTo: {
+              name: 'Géraldine',
+              picture: 'http://api.randomuser.me/portraits/thumb/women/5.jpg'
+            }
           }
         ]
       },
@@ -349,14 +391,33 @@ angular.module('app')
     vm.filter = {};
 
     vm.setFilter = function (state) {
+
+      var t, els;
+
       if (vm.filter.hasOwnProperty(state)) {
+
+        els = $('.room.' + state);
+        t = new TimelineMax();
+        t.to(els, .2, { width: 150, margin: 10 }).to(els, .2, { scale: 1 });
+
         delete vm.filter[state];
       } else {
+
+        els = $('.room.' + state);
+        t = new TimelineMax();
+        t.to(els, .2, { scale: 0 }).to(els, .2, { width: 0, margin: 0 });
+
         vm.filter[state] = true;
       }
       if (state === 'all') {
+
+        els = $('.room');
+        t = new TimelineMax();
+
+        t.to(els, .2, { width: 150, margin: 10 }).to(els, .2, { scale: 1 });
         vm.filter = {};
       }
+
     };
 
     vm.displayRoom = function (state) {
@@ -375,5 +436,9 @@ angular.module('app')
       }
       return !!vm.filter.hasOwnProperty(state);
     };
+
+    vm.changeCurrentFloor = function (index) {
+      vm.currentFloor = vm.floors[index];
+    }
 
   });

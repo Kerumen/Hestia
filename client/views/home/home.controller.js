@@ -146,7 +146,7 @@ angular.module('app')
       $timeout(function () {
         vm.events.unshift({
           title: 'Départ #89',
-          message: 'Un client vient de partir de la chambre 89',
+          message: 'Un client vient de partir de la chambre 102',
           time: Date.now(),
           icon: 'arrow-left'
         });
@@ -171,7 +171,7 @@ angular.module('app')
         content: 'Attention ! Monsieur Durant de la chambre 321 veut que sa chambre soit faite pour 10h30 !'
       },
       {
-        picture: 'http://api.randomuser.me/portraits/thumb/women/16.jpg',
+        picture: 'http://api.randomuser.me/portraits/thumb/women/18.jpg',
         to: 'Alicia',
         time: 'Il y a 44 min',
         content: 'Attention ! Monsieur Durant de la chambre 21 veut que sa chambre soit faite pour 11h30 !'
@@ -187,7 +187,7 @@ angular.module('app')
     vm.addMessage = function () {
       vm.messages.push({
         picture: 'http://api.randomuser.me/portraits/thumb/women/55.jpg',
-        to: 'Carole',
+        to: vm.userSelected,
         time: 'À l\'instant',
         content: vm.message
       });
@@ -199,6 +199,8 @@ angular.module('app')
       }, 100);
     };
 
-    vm.message = 'Mme Durand, veuillez passer au bureau de votre superviseur dans les plus brefs délais.'
+    vm.message = 'Mme Durand, veuillez passer au bureau de votre superviseur dans les plus brefs délais.';
+
+    vm.userSelected = 'Jacqueline';
 
   });

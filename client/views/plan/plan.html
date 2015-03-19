@@ -10,7 +10,7 @@
       <div class="panel-heading">Choix de l'étage</div>
       <div class="panel-body">
         <div class="list-group">
-          <a href="#" class="list-group-item" ng-repeat="floor in vm.floors" ng-class="{active: vm.currentFloor == floor}" ng-click="vm.currentFloor = floor">
+          <a href="#" class="list-group-item" ng-repeat="floor in vm.floors" ng-class="{active: vm.currentFloor == floor}" ng-click="vm.changeCurrentFloor($index)">
             <i class="fa fa-building fa-fw"></i>&nbsp;{{ floor.name }}
           </a>
         </div>
@@ -49,30 +49,35 @@
           </span>
         </span>
       </div>
-      <div class="panel-body">
-        <div class="tab-content">
-            <div class="room room-bg-state {{ room.state }}" ng-class="{occupied: room.occupied}" ng-repeat="room in vm.currentFloor.rooms" ng-if="vm.displayRoom(room.state)">
-              <div ng-if="room.state === 'available'" ng-morph-modal="roomMorphAvailable">
-                <span>{{ room.number }}</span>
-                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
-                <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
-              </div>
-              <div ng-if="room.state === 'unavailable'" ng-morph-modal="roomMorphUnavailable">
-                <span>{{ room.number }}</span>
-                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
-                <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
-              </div>
-              <div ng-if="room.state === 'dirty'" ng-morph-modal="roomMorphDirty">
-                <span>{{ room.number }}</span>
-                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
-                <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
-              </div>
-              <div ng-if="room.state === 'cleaned'" ng-morph-modal="roomMorphCleaned">
-                <span>{{ room.number }}</span>
-                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
-                <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
-              </div>
+
+      <div class="panel-body floors">
+        <div class="floors-inner">
+          <div class="room room-bg-state {{ room.state }}" ng-class="{ occupied: room.occupied }" ng-repeat="room in vm.currentFloor.rooms">
+            <div ng-if="room.state === 'available'" ng-morph-modal="roomMorphAvailable">
+              <span>{{ room.number }}</span>
+              <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
+              <span ng-if="!room.assignedTo" class="fa fa-exclamation-triangle room-danger"></span>
+              <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
             </div>
+            <div ng-if="room.state === 'unavailable'" ng-morph-modal="roomMorphUnavailable">
+              <span>{{ room.number }}</span>
+              <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
+              <span ng-if="!room.assignedTo" class="fa fa-exclamation-triangle room-danger"></span>
+              <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
+            </div>
+            <div ng-if="room.state === 'dirty'" ng-morph-modal="roomMorphDirty">
+              <span>{{ room.number }}</span>
+              <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
+              <span ng-if="!room.assignedTo" class="fa fa-exclamation-triangle room-danger"></span>
+              <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
+            </div>
+            <div ng-if="room.state === 'cleaned'" ng-morph-modal="roomMorphCleaned">
+              <span>{{ room.number }}</span>
+              <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
+              <span ng-if="!room.assignedTo" class="fa fa-exclamation-triangle room-danger"></span>
+              <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

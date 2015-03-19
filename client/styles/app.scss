@@ -6,6 +6,15 @@ body {
   background-color: $lightgray-dark;
 }
 
+hr {
+  display:block;
+  background: rgba(white, .1);
+  margin: 20px auto;
+  width: 80%;
+  border: 1px solid rgba(white, .2);
+  @include box-shadow(rgba(black, .2) 0 -1px);
+}
+
 #wrapper {
   width: 100%;
 }
@@ -229,7 +238,6 @@ body {
   position: relative;
   display: inline-block;
   margin: 10px;
-//  border: 1px solid $mediumgray-light;
   line-height: 150px;
   text-align: center;
   height: 150px;
@@ -249,6 +257,12 @@ body {
     line-height: 0.8;
     font-size: 18px;
   }
+  .room-danger {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+  }
 }
 
 .home-chart {
@@ -259,7 +273,7 @@ body {
 
 .room-morph {
   width: 400px;
-  height: 550px;
+  height: 650px;
   padding: 10px;
   line-height: 1;
   text-align: left;
@@ -385,4 +399,14 @@ body {
   &.dirty {
     background-color: $grapefruit-dark;
   }
+}
+
+.floor {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.floors {
+//  overflow: hidden;
+//  max-height: 375px;
 }
