@@ -38,15 +38,15 @@ angular.module('app')
 
     vm.data = [
       {
-        key: "Propres",
+        key: 'Propres',
         y: 48
       },
       {
-        key: "Inspectées",
+        key: 'Inspectées',
         y: 56
       },
       {
-        key: "Sales",
+        key: 'Sales',
         y: 25
       }
     ];
@@ -59,23 +59,17 @@ angular.module('app')
         important: false
       },
       {
-        message: 'Oreiller manquant chambre 68',
+        message: 'Oreiller manquant chambre 202',
         time: 'Il y a 25 min',
-        done: false,
-        important: false
-      },
-      {
-        message: 'Toilette bouché chambre 308',
-        time: 'Il y a 4 min',
         done: false,
         important: false
       }
     ];
 
-    vm.addAlert = function () {
+    vm.addDangerAlert = function () {
       $timeout(function () {
         vm.alerts.push({
-          message: 'Comportement indésirable signalé chambre 68 !',
+          message: 'Carole vient de signaler un comportement indésirable près de l\'ascenseur 2 !',
           time: 'A l\'instant',
           done: false,
           important: true
@@ -83,42 +77,83 @@ angular.module('app')
       }, 3000);
     };
 
+    vm.addPlumberAlert = function () {
+      $timeout(function () {
+        vm.alerts.push({
+          message: 'Problème de plomberie chambre 104',
+          time: 'À l\'instant',
+          done: false,
+          important: false
+        });
+      }, 3000);
+    };
+
     vm.noAlert = function () {
       return _.find(vm.alerts, function (item) {
         return !item.done;
-      })
+      });
     };
 
     vm.events = [
       {
         title: 'Nettoyage #201',
         message: 'Alice vient de nettoyer la chambre 201',
-        time: '17h30'
+        time: Date.now() - 1200000,
+        icon: 'bed'
+      },
+      {
+        title: 'Départ #20',
+        message: 'Un client vient de partir de la chambre 20',
+        time: Date.now() - 2400000,
+        icon: 'arrow-left'
       },
       {
         title: 'Nettoyage #58',
         message: 'Jacqueline vient de nettoyer la chambre 58',
-        time: '17h15'
+        time: Date.now() - 3600000,
+        icon: 'bed'
       },
       {
         title: 'Nettoyage #22',
         message: 'Fatima vient de nettoyer la chambre 22',
-        time: '16h08'
+        time: Date.now() - 5800000,
+        icon: 'bed'
       },
       {
         title: 'Nettoyage #147',
         message: 'Franck vient de nettoyer la chambre 147',
-        time: '15h22'
+        time: Date.now() - 7800000,
+        icon: 'bed'
       }
     ];
 
-    vm.addEvent = function () {
+    vm.addCleanEvent = function () {
       $timeout(function () {
         vm.events.unshift({
-          title: 'Nettoyage #42',
-          message: 'Alicia vient de nettoyer la chambre 42',
-          time: '18h04'
+          title: 'Nettoyage #104',
+          message: 'Carole vient de nettoyer la chambre 104',
+          time: Date.now(),
+          icon: 'bed'
         });
+
+        vm.data[0].y++;
+        vm.data[2].y--;
+
+      }, 3000);
+    };
+
+    vm.addClientLeaveEvent = function () {
+      $timeout(function () {
+        vm.events.unshift({
+          title: 'Départ #89',
+          message: 'Un client vient de partir de la chambre 89',
+          time: Date.now(),
+          icon: 'arrow-left'
+        });
+
+        vm.data[0].y--;
+        vm.data[2].y++;
+
       }, 3000);
     };
 

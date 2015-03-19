@@ -4,7 +4,7 @@
 <div class="room-content {{ room.state }}">
   <div class="room-content-title">Client</div>
   <div>
-    <div ng-if="!room.client">Il n'y a aucun client dans cette chambre.</div>
+    <div ng-if="!room.client">Aucun client dans cette chambre.</div>
     <div ng-if="room.client.vip">Ce client est VIP.</div>
     <div ng-if="room.client && !room.client.vip">Ce client n'est pas VIP.</div>
   </div>
@@ -13,10 +13,15 @@
 <div class="room-content {{ room.state }}">
   <div class="room-content-title">Employé</div>
   <div class="room-housemaid clearfix">
-    <div ng-if="!room.housemaid">Il n'y a aucun employé dans cette chambre.</div>
+    <div ng-if="!room.housemaid">Aucun employé dans cette chambre.</div>
     <div ng-if="room.housemaid">
-      <div class="room-housemaid-picture"><img ng-src="{{ room.housemaid.picture }}"/></div>
-      <div class="room-housemaid-infos">{{ room.housemaid.name }} est actuellement dans la chambre depuis {{ room.housemaid.timeElapsed | date: "mm'm'ss's'" }}.</div>
+      <div class="row">
+        <div class="col-md-4"><img ng-src="{{ room.housemaid.picture }}"/></div>
+        <div class="col-md-4">{{ room.housemaid.name }}</div>
+        <div class="col-md-4">
+          {{ room.housemaid.timeElapsed | date: "mm:ss" }}
+        </div>
+      </div>
     </div>
   </div>
 </div>

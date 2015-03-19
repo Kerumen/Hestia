@@ -345,4 +345,35 @@ angular.module('app')
       vm.floors[0].rooms[4].housemaid.timeElapsed += 1000;
     }, 1000);
 
+
+    vm.filter = {};
+
+    vm.setFilter = function (state) {
+      if (vm.filter.hasOwnProperty(state)) {
+        delete vm.filter[state];
+      } else {
+        vm.filter[state] = true;
+      }
+      if (state === 'all') {
+        vm.filter = {};
+      }
+    };
+
+    vm.displayRoom = function (state) {
+      if (_.isEmpty(vm.filter)) {
+        return true;
+      }
+      return !!(vm.filter.hasOwnProperty(state) && vm.filter[state]);
+    };
+
+    vm.checkFilter = function (state) {
+      if (_.isEmpty(vm.filter) && state === 'all') {
+        return true;
+      }
+      if (_.isEmpty(vm.filter)) {
+        return false;
+      }
+      return !!vm.filter.hasOwnProperty(state);
+    };
+
   });

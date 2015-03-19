@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-lg-12">
     <h1 class="page-header">
-      <span ng-click="vm.addAlert()">Tableau de bord</span>
-      <span ng-click="vm.addEvent()" class="pull-right">{{ vm.time | date:'mediumTime' }}</span>
+      <span ng-click="vm.addDangerAlert()">Tableau de bord</span>
+      <span ng-click="vm.addCleanEvent()" class="pull-right">{{ vm.time | date:'mediumTime' }}</span>
     </h1>
   </div>
 </div>
@@ -11,12 +11,12 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading"><i class="fa fa-pie-chart"></i>&nbsp;Répartition</div>
-      <div class="panel-body">
+      <div class="panel-body home-chart">
         <nvd3 options="vm.options" data="vm.data"></nvd3>
       </div>
     </div>
     <div class="panel panel-default">
-      <div class="panel-heading">
+      <div class="panel-heading" ng-click="vm.addPlumberAlert()">
         <i class="fa fa-exclamation-triangle fa-fw"></i>&nbsp;Alertes
       </div>
       <div class="panel-body home-alerts">
@@ -33,15 +33,15 @@
   </div>
   <div class="col-md-6">
     <div class="panel panel-default panel-timeline">
-      <div class="panel-heading"><i class="fa fa-bell"></i>&nbsp;Événements</div>
+      <div class="panel-heading" ng-click="vm.addClientLeaveEvent()"><i class="fa fa-bell"></i>&nbsp;Événements</div>
       <div class="panel-body">
         <div class="timeline">
           <dl>
             <dd class="clearfix home-event" ng-class="{ 'pos-right': $odd, 'pos-left': $even }" ng-repeat="event in vm.events">
               <div class="circ"></div>
-              <div class="time">{{ event.time }}</div>
+              <div class="time">{{ event.time | date: 'shortTime' }}</div>
               <div class="events">
-                <div class="pull-left"><i class="events-object fa fa-bed fa-3x"></i></div>
+                <div class="pull-left"><i class="events-object fa fa-{{ event.icon }} fa-3x"></i></div>
                 <div class="events-body"><h4 class="events-heading">{{ event.title }}</h4>
 
                   <p>{{ event.message }}</p></div>

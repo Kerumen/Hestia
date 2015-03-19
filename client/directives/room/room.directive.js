@@ -7,8 +7,6 @@ angular.module('app')
       scope: {
         room: '='
       },
-      templateUrl: 'directives/room/room.html',
-      link: function (scope, element) {
-      }
+      templateUrl: 'directives/room/room.html'
     };
   });

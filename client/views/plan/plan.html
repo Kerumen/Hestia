@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Plan de l'hôtel</h1>
+    <h1 class="page-header">Gestion de l'hôtel</h1>
   </div>
 </div>
 
@@ -19,25 +19,58 @@
   </div>
   <div class="col-md-10">
     <div class="panel panel-default">
-      <div class="panel-heading">{{ vm.currentFloor.name }}</div>
+      <div class="panel-heading">
+        {{ vm.currentFloor.name }}
+        <span class="pull-right floor-legend">
+          <span ng-click="vm.setFilter('dirty')">
+            <span ng-if="!vm.checkFilter('dirty')" class="fa fa-circle-o"></span>
+            <span ng-if="vm.checkFilter('dirty')" class="fa fa-circle"></span>
+            <span class="room-bg-state dirty">Sale</span>
+          </span>
+          <span ng-click="vm.setFilter('cleaned')">
+            <span ng-if="!vm.checkFilter('cleaned')" class="fa fa-circle-o"></span>
+            <span ng-if="vm.checkFilter('cleaned')" class="fa fa-circle"></span>
+            <span class="room-bg-state cleaned">Propre</span>
+          </span>
+          <span ng-click="vm.setFilter('available')">
+            <span ng-if="!vm.checkFilter('available')" class="fa fa-circle-o"></span>
+            <span ng-if="vm.checkFilter('available')" class="fa fa-circle"></span>
+            <span class="room-bg-state available">Inspectée</span>
+          </span>
+          <span ng-click="vm.setFilter('unavailable')">
+            <span ng-if="!vm.checkFilter('unavailable')" class="fa fa-circle-o"></span>
+            <span ng-if="vm.checkFilter('unavailable')" class="fa fa-circle"></span>
+            <span class="room-bg-state unavailable">Indisponible</span>
+          </span>
+          <span ng-click="vm.setFilter('all')">
+            <span ng-if="!vm.checkFilter('all')" class="fa fa-circle-o"></span>
+            <span ng-if="vm.checkFilter('all')" class="fa fa-circle"></span>
+            <span class="">Tout</span>
+          </span>
+        </span>
+      </div>
       <div class="panel-body">
         <div class="tab-content">
-            <div class="room {{ room.state }}" ng-class="{occupied: room.occupied}" ng-repeat="room in vm.currentFloor.rooms">
+            <div class="room room-bg-state {{ room.state }}" ng-class="{occupied: room.occupied}" ng-repeat="room in vm.currentFloor.rooms" ng-if="vm.displayRoom(room.state)">
               <div ng-if="room.state === 'available'" ng-morph-modal="roomMorphAvailable">
                 <span>{{ room.number }}</span>
-                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
+                <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
               </div>
               <div ng-if="room.state === 'unavailable'" ng-morph-modal="roomMorphUnavailable">
                 <span>{{ room.number }}</span>
-                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
+                <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
               </div>
               <div ng-if="room.state === 'dirty'" ng-morph-modal="roomMorphDirty">
                 <span>{{ room.number }}</span>
-                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
+                <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
               </div>
               <div ng-if="room.state === 'cleaned'" ng-morph-modal="roomMorphCleaned">
                 <span>{{ room.number }}</span>
-                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working"></span>
+                <span ng-if="room.housemaid" class="fa fa-cog fa-spin room-working-icon"></span>
+                <span ng-if="room.housemaid" class="room-working-time">{{ room.housemaid.timeElapsed | date: "mm:ss" }}</span>
               </div>
             </div>
         </div>

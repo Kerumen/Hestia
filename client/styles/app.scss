@@ -186,67 +186,45 @@ body {
 }
 
 .room {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   position: relative;
   display: inline-block;
   margin: 10px;
 //  border: 1px solid $mediumgray-light;
-  line-height: 100px;
+  line-height: 150px;
   text-align: center;
-  height: 100px;
-  width: 100px;
-  font-size: 20px;
+  height: 150px;
+  width: 150px;
+  font-size: 22px;
   border-radius: 2px;
-  &.available {
-    background-color: $grass-dark;
+  .room-working-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 18px;
   }
-  &.unavailable {
-    background-color: $mediumgray-dark;
-  }
-  &.cleaned {
-    background-color: $bluejeans-dark;
-  }
-  &.dirty {
-    background-color: $grapefruit-dark;
-    &.occupied {
-//      opacity: 0.4;
-    }
-  }
-  .room-working {
+  .room-working-time {
     position: absolute;
     bottom: 10px;
     right: 10px;
+    line-height: 0.8;
+    font-size: 18px;
+  }
+}
+
+.home-chart {
+  svg .nv-pieLabels text {
+    font-size: 25px;
   }
 }
 
 .room-morph {
   width: 400px;
-  height: 500px;
+  height: 550px;
   padding: 10px;
   line-height: 1;
   text-align: left;
-  &.available {
-    background-color: $grass-dark;
-  }
-  &.unavailable {
-    background-color: $mediumgray-dark;
-  }
-  &.cleaned {
-    background-color: $bluejeans-dark;
-  }
-  &.dirty {
-    background-color: $grapefruit-dark;
-  }
-}
-
-.room-housemaid-picture {
-  float: left;
-  margin-right: 15px;
-}
-
-.room-housemaid-infos {
-  margin-top: 10px;
-  display: inline;
 }
 
 .room-content {
@@ -311,7 +289,7 @@ body {
     display: block;
     overflow: hidden;
     text-overflow: clip;
-    white-space:nowrap;
+    white-space: nowrap;
   }
 
   &.ng-leave.ng-leave-active,
@@ -334,5 +312,32 @@ body {
   &.ng-enter.ng-enter-active,
   &.ng-leave {
     height: 97px;
+  }
+}
+
+.floor-legend {
+  cursor: pointer;
+  .room-bg-state {
+    margin-right: 15px;
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+  span {
+    margin-left: 5px;
+  }
+}
+
+.room-bg-state {
+  &.available {
+    background-color: $grass-dark;
+  }
+  &.unavailable {
+    background-color: $mediumgray-dark;
+  }
+  &.cleaned {
+    background-color: $bluejeans-dark;
+  }
+  &.dirty {
+    background-color: $grapefruit-dark;
   }
 }
